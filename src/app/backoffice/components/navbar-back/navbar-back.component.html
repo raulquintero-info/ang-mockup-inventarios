@@ -1,0 +1,147 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-menu">
+  <div class="container-fluid ms-3">
+    <a class="navbar-brand" href="/">
+      <img class="brand-logo" src="/assets/logos/infotec-logo-bar-3.png" alt="">
+
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">zxczxc</span>
+      <img class="brand-logo" src="/assets/logos/infotec-logo-bar.png" alt="">
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li class="nav-item ms-3">
+          <a class="btn btn-gris" routerLink="/dashboard" aria-current="page" href="#">Dashboard</a>
+        </li>
+
+        <li ngbDropdown class="nav-item dropdown">
+
+            <a  class="btn btn-gris" id="dropdownBasic1" ngbDropdownToggle>Productos</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button [routerLink]="'/productos'" ngbDropdownItem>Lista de Productos</button>
+            <!-- <button [routerLink]="'/productos/agregar'" ngbDropdownItem>Agregar de Producto</button> -->
+            <button [routerLink]="'/productos/tipos'" ngbDropdownItem>Tipos de Producto</button>
+            <button [routerLink]="'/productos/categorias'" ngbDropdownItem>Categorias</button>
+          </div>
+
+        </li>
+
+        <li ngbDropdown class="nav-item dropdown">
+          <button type="button" class="btn btn-gris" id="dropdownBasic1" ngbDropdownToggle>Entradas</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button [routerLink]="'entradas/ordenes'" ngbDropdownItem>Ordenes de Compra &raquo;</button>
+            <button [routerLink]="'entradas/ordenes-recepcion-list'" ngbDropdownItem>Ordenes Recibidas &raquo;</button>
+            <button [routerLink]="'/'" ngbDropdownItem>Devoluciones &raquo;</button>
+            <button [routerLink]="'entradas/proveedores'" ngbDropdownItem>Proveedores</button>
+            <!-- <button [routerLink]="'/'" ngbDropdownItem>Devoluciones</button> -->
+            <!-- <button ngbDropdownItem>Almacenes</button> -->
+          </div>
+        </li>
+        <li ngbDropdown class="nav-item dropdown">
+          <button type="button" class="btn btn-gris" id="dropdownBasic1" ngbDropdownToggle>Salidas</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button [routerLink]="'/salidas/pedidos'" ngbDropdownItem>Pedidos &raquo;</button>
+            <button [routerLink]="'/'" ngbDropdownItem>Envio de Pedidos</button>
+            <button [routerLink]="'/salidas/departamentos'" ngbDropdownItem>Departamentos</button>
+          </div>
+        </li>
+        <li ngbDropdown class="nav-item dropdown">
+          <button type="button" class="btn btn-gris" id="dropdownBasic1" ngbDropdownToggle>Almacenes</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button [routerLink]="'/almacenes/movimientos'" ngbDropdownItem>Movimientos &raquo;</button>
+            <button [routerLink]="'/almacenes'" ngbDropdownItem>Almacenes</button>
+            <!-- <button ngbDropdownItem>Departamentos</button> -->
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="btn btn-gris" routerLink="/" aria-current="page" >Reportes</a>
+        </li>
+          <!-- <ul class="dropdown-menu">
+            <li><a [routerLink]="'/'" class="dropdown-item">Ordenes de Compra &raquo;</a></li>
+            <li><a [routerLink]="'/'" class="dropdown-item">Proveedores <i
+                  class="bi bi-bookmark-fill text-warning"></i> </a> </li>
+            <li><a [routerLink]="'/'" class="dropdown-item">Almacenes &raquo;</a></li>
+          </ul> -->
+
+
+
+<!--
+        <li class="nav-item dropdown">
+
+          <button type="button" class="btn btn-gris" id="dropdownBasic1" ngbDropdownToggle>Salidas</button>
+
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button [routerLink]="'/dashboard'" ngbDropdownItem>Pedidos &raquo;</button>
+              <button [routerLink]="'/dashboard'" ngbDropdownItem>Clientes</button>
+              <button ngbDropdownItem>Departamentos</button>
+            </div>
+          </li> -->
+          <!-- <ul class="dropdown-menu">
+            <li><a [routerLink]="'/'" class="dropdown-item">Pedidos &raquo;</a></li>
+            <li><a [routerLink]="'/'" class="dropdown-item">Clientes <i
+                  class="bi bi-bookmark-fill text-warning"></i> </a> </li>
+            <li><a [routerLink]="'/'" class="dropdown-item">Departamentos &raquo;</a></li>
+          </ul> -->
+      </ul>
+
+
+
+      <ul class="navbar-nav ms-auto me-4">
+
+        <li ngbDropdown  class="nav-item dropdown">
+          <!-- <div ngbDropdown class="d-inline-block"> -->
+            <button type="button" class="btn btn-gris" id="dropdownBasic1" ngbDropdownToggle>
+              <i class="bi bi-building-fill-check"></i> {{almacenSelected.nombre | titlecase}}
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem *ngFor="let almacen of almacenes" (click)="onAlmacen(almacen)" >{{almacen.nombre | titlecase}}</button>
+
+            </div>
+          </li>
+
+
+
+
+
+
+        <li class="nav-item dropdown   ">
+          <a class="nav-link btn-gris  dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- {{ userData.username }} --><i class="bi bi-person-circle"></i> usuario
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" ><i class="bi bi-person-circle"></i> Mi
+                Perfil</a></li>
+
+
+                      <!-- [routerLink]="['/auth/logout']" -->
+            <li><button class="dropdown-item"  routerLinkActive="router-link-active"><i
+                  class="bi bi-door-closed"></i> Cerrar Sesión</button></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</nav>
+<!-- <div class=" sticky-top sub-bar" >
+
+  <div class="container p-1" style="border-right: 1px solid #00000029;">
+
+
+
+
+    <span class="sub-menu ms-1" >
+      <i class="bi bi-plus-circle"></i> Cliente Nuevo
+    </span>
+    <span class="sub-menu ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <i class="bi bi-search"></i> Buscar Cliente
+    </span>
+
+  </div>
+</div> -->
+
+

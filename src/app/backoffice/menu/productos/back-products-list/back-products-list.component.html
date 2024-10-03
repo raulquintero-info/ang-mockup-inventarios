@@ -1,0 +1,222 @@
+
+<div class="fullscreen">
+
+  <div class="fullscreen-sidebar">
+    <div
+      style="border: 1px solid #d9dadf;position: relative; top:0px;  height: 100% ; bottom:80px;background-color:  white;">
+      <div class="toolbox-category ps-2">
+        Categorias
+        <!-- <div class="btn-group">
+          <a class=" btn-toolbox btn-sm" routerLink="/dashboard" aria-current="page" href="#"><i
+              class="bi bi-sort-alpha-up"></i></a>
+          <a class="btn-toolbox btn-sm" routerLink="/dashboard" aria-current="page" href="#"><i
+              class="bi bi-sort-alpha-down"></i></a>
+          <a class=" btn-toolbox btn-sm" routerLink="/dashboard" aria-current="page" href="#"><i class="bi bi-folder-plus"></i></a>
+          <a class="  btn-toolbox btn-sm" routerLink="/dashboard" aria-current="page" href="#"><i
+              class="bi bi-sort-alpha-down"></i></a>
+          <a class="  btn-toolbox btn-sm" routerLink="/dashboard" aria-current="page" href="#"><i
+              class="bi bi-sort-alpha-down"></i></a>
+
+        </div> -->
+
+      </div>
+      <div class="directory ms-2">
+
+        <i class="bi bi-folder2"></i> Root<br>
+        <!-- <div><span class="vl">— </span><span class="btn-azul">Camisas</span></div> -->
+        <div  *ngFor="let categoria of categorias">
+          <div><span class="vl">— </span><i class="bi bi-folder2"></i><span class="btn-azul">{{categoria.nombre}} ({{categoria.children.length}})</span></div>
+
+          <div *ngIf="categoria.children.length">
+
+            <div *ngFor="let subcat of categoria.children">
+              <div><span class="vl-empty2"></span><span class="vl">— </span><i class="bi bi-folder2"></i> <span class="btn-azul"> <strong> {{subcat.nombre}} ({{subcat.children.length}})</strong></span></div>
+
+              <div *ngIf="subcat.children.length">
+                <div *ngFor="let subcat2 of subcat.children; let i=index">
+                  <div><span class="vl-empty2"></span><span class="vl-empty2"></span><span class="vlsub">—</span>
+                    <span class="btn-azul"  (click)="[onCategory(subcat2.nombre,subcat2.id, i)]"> {{subcat2.nombre | titlecase}}</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+
+  <div class="fullscreen-content">
+    <div class=" ps-2  pt-2 pb-2 round-bar-beige"
+      style="background-color:#d9cdba; border-top: 4px solid #cbb392;border-bottom: 1px solid #bbab90;
+        color: black; border-left: 1px solid #bcaa92;">
+
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb" style="margin-bottom:0;">
+          <li class="breadcrumb-item  ">Root</li>
+          <li class="breadcrumb-item " aria-current="page">Papeleria</li>
+          <li class="breadcrumb-item " aria-current="page">Oficina</li>
+          <li class="breadcrumb-item " aria-current="page">{{categoriaTitulo | titlecase}}</li>
+
+        </ol>
+      </nav>
+
+
+    </div>
+
+    <div class="input-group ">
+      <input type="text" class="form-control mt-2 mb-1 ms-1" style="border-radius: 0px;"
+        placeholder=">> Producto a Buscar" aria-label="Producto a buscar" aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary mt-2 mb-1 me-1" style="border-radius: 0px" type="button"
+        id="button-addon2"><i class="bi bi-search"></i> Buscar
+      </button>
+      <button class="btn btn-success ms-1 mt-2 mb-1 me-1" style="border-radius: 0px" type="button" (click)="onAgregarProducto()"
+        id="button-addon2"><i class="bi bi-plus-square"></i> Agregar Item
+      </button>
+      <div class="dropdown me-2" style="position:relative; top:8px; ">
+        <button class="btn btn-secondary dropdown-toggle" style="border-radius: 0px"
+          type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Exportar a:
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <!-- <li><a class="dropdown-item" href="#">Exel</a></li> -->
+          <li><a class="dropdown-item" href="#">PDF</a></li>
+          <li><a class="dropdown-item" href="#">CSV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style=" overflow-y: scroll;" [ngStyle]="{'height':windowSize}">
+
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio de compra</th>
+            <th scope="col">Unidida</th>
+            <th class="text-center" scope="col">Minimo</th>
+            <th class="text-center">Existencia</th>
+            <th class="text-center" scope="col">Máximo</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let country of items;"  (click)="singleClick(country.id - 1)" (dblclick)="doubleClick( )" class="clickable">
+              <td scope="row">{{ country.id }}</td>
+              <td>{{ country.nombre }}</td>
+              <td>{{ country.precio | currency }}</td>
+              <td>{{ country.unidad.nombre| titlecase }}</td>
+              <td class="text-center">{{ country.minimo}}</td>
+              <td class="text-center" [ngClass]="{'bg-danger text-light': country.existencia<1}"><strong>{{ country.existencia}}</strong></td>
+              <td class="text-center">{{ country.maximo}}</td>
+            </tr>
+        </tbody>
+      </table>
+
+
+
+    </div>
+    <div class="paginator">
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination
+          [collectionSize]="collectionSize"
+          [(page)]="page"
+          [pageSize]="pageSize"
+          (pageChange)="refreshCountries()"
+        >
+        </ngb-pagination>
+
+        <select class="form-select btn-verde" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+          <option [ngValue]="2">2 items por pag</option>
+          <option [ngValue]="4">4 items por pag</option>
+          <option [ngValue]="6">6 items por pag</option>
+          <option [ngValue]="10">10 items por pag</option>
+          <option [ngValue]="20">20 items por pag</option>
+          <option [ngValue]="25">25 items por pag</option>
+          <option [ngValue]="50">50 items por pag</option>
+        </select>
+      </div>
+          <!-- <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item active"><a class="page-link bg-warning text-dark" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav> -->
+
+    </div>
+
+    <!-- <div class="ms-3 mt-3">
+      <button class="btn btn-secondary me-3">Ordenar Pedido</button>
+      <button class="btn btn-secondary">Salida de Productos</button>
+    </div> -->
+    <div class="pe-2 d-flex round-bar-beige"
+      style="background-color: #d9cdba;border-top: 1px solid #bbab90; border-bottom: 1px solid #bbab90;">
+      <div class="flex-grow-1 ms-2"><span style="font-size: 1.5rem">Detalles del Producto</span></div>
+      <div class="mt-1 me-2 clickable" *ngIf="windowSize=='45dvh'" (click)="maximize()"><i class="bi bi-caret-down-fill text-end" ></i> </div>
+    </div>
+    <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+    <div style="height: 27dvh; overflow-y: scroll; background-color: #fffbf4"  *ngIf="itemSelected">
+
+      <div class="mt-1 ms-2"><h3>{{itemSelected.nombre | titlecase}} <button class="btn btn-verde btn-sm" (click)="doubleClick( )"><i class="bi bi-pencil-square"></i></button></h3></div>
+      <table class="m-3" style="min-width:500px">
+        <tr>
+          <td>
+            <div class="mb-2">Id: <input type="text" readonly disabled  value="{{ itemSelected.id}}"></div>
+              <div class="mb-2">item: <input type="text" readonly disabled  value="{{ itemSelected.nombre}}"></div>
+                <div class="mb-2">Cantidad: <input type="text" readonly disabled  value="{{itemSelected.cantidad}}"></div>
+                  <div class="mb-2">Precio de compra: <input type="text" readonly disabled  value="{{itemSelected.precio}}"></div>
+                    <!-- <div>Unidad: <input type="text" readonly disabled  value="{{itemSelected.unidad.nombre}}"></div> -->
+          <td class="ps-3 mb-3" style="vertical-align: top;">Status:  <input type="text" readonly disabled  value="Activo">
+            <div class="mb-2">Fecha de Registro:  <input type="text" readonly disabled  value="08/jul/2023"></div>
+            <div class="mb-2">Minimo:  <input type="text" readonly disabled  value="{{itemSelected.minimo}}"></div>
+            <div class="mb-2"><strong> Existencia:</strong>  <input type="text" readonly disabled  value="{{itemSelected.existencia}}"
+                [ngClass]="{'bg-danger text-light': itemSelected.existencia<1}"></div>
+            <div class="mb-2">Maximo:  <input type="text" readonly disabled  value="{{itemSelected.maximo}}"></div>
+          </td>
+          <td style="vertical-align: top;" class="ps-3">
+            <table class="table table-hover table-striped tbl-data">
+              <thead>
+                <tr>
+                  <th scope="col">Almacen</th>
+                  <th class="text-center">Existencia</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr class="clickable"><td scope="row">Principal</td><td>120</td></tr>
+                  <tr class="clickable"><td scope="row">Del Sol</td><td>20</td></tr>
+                  <tr class="clickable"><td scope="row">Miramontes</td><td>320</td></tr>
+              </tbody>
+            </table>
+
+          </td>
+          <td style="vertical-align: top;" class="ps-3">
+            <div style="font-weight: bold;">Ventas x  Mes</div><br>
+            <img src="/assets/graficas/grafica1.png" alt="" srcset="" style="height: 80px; width: 250px">
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+

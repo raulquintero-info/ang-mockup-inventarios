@@ -50,7 +50,7 @@ export class BackEntradasOrdenNuevaComponent implements OnInit {
 
     Swal.fire({
       title: "Desea Continuar?",
-      text: "You won't be able to revert this!",
+      text: "Esta Accion Grabara una orden nueva en Base de datos",
       // icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -83,11 +83,11 @@ export class BackEntradasOrdenNuevaComponent implements OnInit {
   }
 
   onAddProduct() {
-    this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent);
+    this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
 
   }
   onEditProduct() {
-    const modalRef = this.modalService.open(ModalAgregarItemComponent,);
+    const modalRef = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
     modalRef.componentInstance.name = 'World';
   }
 }

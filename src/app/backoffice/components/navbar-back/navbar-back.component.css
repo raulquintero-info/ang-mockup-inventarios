@@ -41,11 +41,12 @@
 }
 .bg-menu{
   background-color: #d9dadf;
-  border-bottom: 3px solid #d4d4d4;
+  border-bottom: 1px solid #afb0b4;
   color: gray;
 }
 .dropdown-menu.show {
   border-radius: 0px;
   background-color: #efeff0;
-  top: 30px
+  top: 36px;
+  left: -1px;
 }

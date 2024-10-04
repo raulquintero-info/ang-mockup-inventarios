@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DEPARTAMENTOS } from 'src/app/data/departamentos';
 import { ITEMS } from 'src/app/data/items';
@@ -21,6 +21,8 @@ export class BackSalidasPedidosNuevoComponent {
   carrito = PRODUCTOSLISTA;
   items = ITEMS;
   total= 2500
+
+  // @Input() name: string ='';
 
   private modalService= inject(NgbModal);
   private router = inject(Router);
@@ -48,7 +50,7 @@ onGrabar(){
 
   Swal.fire({
     title: "Desea Continuar?",
-    text: "You won't be able to revert this!",
+    text: "Este Salida generará 2 Salidas de diferentes almacenes",
     // icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
@@ -80,11 +82,15 @@ viewPedido(){
   }
 
   onAddProduct(){
-    this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent);
+    this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
+    this.modalAgergarItem.componentInstance.name = 'Agregar Producto';
+    this.modalAgergarItem.componentInstance.item = this.carrito[1];
 
   }
-  onEditProduct(){
-    const modalRef = this.modalService.open(ModalAgregarItemComponent);
-    modalRef.componentInstance.name = 'World';
+  onEditProduct(id: number){
+    const modalRef = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
+    modalRef.componentInstance.name = 'Editar Producto';
+    modalRef.componentInstance.item = this.carrito[id-1];
+
   }
 }

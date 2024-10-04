@@ -1,17 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ModalAgregarItemComponent } from '../modal-agregar-item/modal-agregar-item.component';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PROVEEDORES } from 'src/app/data/proveedores';
 import { PRODUCTOSORDEN } from '../data/productosorden';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ORDENES } from '../data/ordenes';
 
 @Component({
   selector: 'app-back-entradas-orden-recepcion-detalle',
   templateUrl: './back-entradas-orden-recepcion-detalle.component.html',
   styleUrls: ['./back-entradas-orden-recepcion-detalle.component.css']
 })
-export class BackEntradasOrdenRecepcionDetalleComponent {
+export class BackEntradasOrdenRecepcionDetalleComponent implements OnInit {
   bottomBarSize = "48px";
   isMaximized = false;
   proveedores = PROVEEDORES;
@@ -21,12 +22,19 @@ export class BackEntradasOrdenRecepcionDetalleComponent {
   carrito = PRODUCTOSORDEN;
   // items = ITEMS;
   total= 2500
-  isEditing: boolean = true;
+  isReceived:boolean =  true;
+  isEditing: boolean = false;
+  ordenes = ORDENES;
+  orden: any;
 
   private modalService= inject(NgbModal);
   private router = inject(Router);
-  ngOnInit(){
+  private activatedRoute = inject(ActivatedRoute);
 
+  ngOnInit(){
+    this.activatedRoute.params.subscribe(({id}) => {
+      this.orden = this.ordenes[id-1];
+    });
   }
 
   onSave() {
@@ -85,12 +93,12 @@ export class BackEntradasOrdenRecepcionDetalleComponent {
   onAddProduct(){
     if (!this.isEditing) return;
 
-    this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent);
+    this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
 
   }
   onEditProduct(){
     if (!this.isEditing) return;
-    const modalRef = this.modalService.open(ModalAgregarItemComponent);
+    const modalRef = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
     modalRef.componentInstance.name = 'World';
   }
 

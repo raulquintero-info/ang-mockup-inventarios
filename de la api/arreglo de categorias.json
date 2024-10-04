@@ -1,0 +1,22 @@
+{
+    "id":1,
+    "nombre":"Papeleria",
+    "idPadre": 0,
+    "esFolder": true,
+    "hijos":[
+        {
+            "id":2,
+            "nombre":"Oficina",
+            "idPadre": 1,
+            "esFolder": true,
+            "hijos":[
+                {"id": 3, "nombre": "plumas", "idPadre": 2, "esFolder": false },
+                {"id": 3, "nombre": "cuadernos", "idPadre": 2, "esFolder": false },
+                {"id": 3, "nombre": "lapices", "idPadre": 2, "esFolder": false },
+                {"id": 3, "nombre": "borradores", "idPadre": 2, "esFolder": false },
+                {"id": 3, "nombre": "Correctores", "idPadre": 2, "esFolder": false }
+            ]
+        }
+    ]
+
+}

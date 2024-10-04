@@ -1,16 +1,17 @@
+
+<div class="modal-title">
+  <h3> {{ name | titlecase}}</h3>
+</div>
+
 <div class="m-3">
-
-  <div>
-    <h3>Agregar / Editar</h3>
-  </div>
-
   <hr>
 
   <div class="d-flex">
-    <div class="flex-grow-1">
+    <div class="flex-grow-1 pe-5">
 
-      <strong>Pluma Bic Punto Medio </strong><br>
-      Color: Azul <br>
+      <strong>{{item.nombre | titlecase}} </strong><br>
+
+      Precio: {{item.precio}} <br>
       Unidad: Pza.<br>
       <!-- Existencia: 1200 <br> -->
       <!-- Reservadas: 150<br> -->
@@ -34,7 +35,7 @@
       <div class="clickable mt-2" style="color: blue; font-size:12px "><i>[Eliminar producto]</i></div>
     </div>
     <div>
-      <div class="ps-2 mb-3" style="overflow-y: scroll; width: 230px; height: 240px;">
+      <div class="ps-2 mb-3" style="overflow-y: scroll; width: 230px; height: 200px;">
         <table class="table table-hover table-striped tbl-data " >
           <thead>
             <tr>

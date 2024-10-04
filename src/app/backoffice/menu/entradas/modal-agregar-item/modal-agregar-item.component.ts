@@ -1,4 +1,4 @@
-import { Component, NgZone, inject } from '@angular/core';
+import { Component, Input, NgZone, inject } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,6 +8,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalAgregarItemComponent {
 
+@Input() name: string ='';
+@Input() item: any;
 
   public activeModal = inject(NgbActiveModal);
     private ngZone = inject (NgZone);

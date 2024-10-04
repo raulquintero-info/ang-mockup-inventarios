@@ -28,7 +28,7 @@
         </li>
 
         <li ngbDropdown class="nav-item dropdown">
-          <button type="button" class="btn btn-gris" id="dropdownBasic1" ngbDropdownToggle>Entradas</button>
+          <button type="button" class="btn btn-gris"  style="background-color: #eddde2" id="dropdownBasic1" ngbDropdownToggle>Entradas</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button [routerLink]="'entradas/ordenes'" ngbDropdownItem>Ordenes de Compra &raquo;</button>
             <button [routerLink]="'entradas/ordenes-recepcion-list'" ngbDropdownItem>Ordenes Recibidas &raquo;</button>
@@ -39,10 +39,10 @@
           </div>
         </li>
         <li ngbDropdown class="nav-item dropdown">
-          <button type="button" class="btn btn-gris" id="dropdownBasic1" ngbDropdownToggle>Salidas</button>
+          <button type="button" class="btn btn-gris"  style="background-color: #e9dfcf" id="dropdownBasic1" ngbDropdownToggle>Salidas</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button [routerLink]="'/salidas/pedidos'" ngbDropdownItem>Pedidos &raquo;</button>
-            <button [routerLink]="'/'" ngbDropdownItem>Envio de Pedidos</button>
+            <button [routerLink]="'/salidas/pedidos'" ngbDropdownItem>Salidas &raquo;</button>
+            <button [routerLink]="'/'" ngbDropdownItem>ProcesarSalida</button>
             <button [routerLink]="'/salidas/departamentos'" ngbDropdownItem>Departamentos</button>
           </div>
         </li>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ENTRADASORDENES } from '../data/entradasordenes';
+import { ORDENES } from '../data/ordenes';
 
 @Component({
   selector: 'app-back-entradas-ordenes',
@@ -9,7 +10,8 @@ import { ENTRADASORDENES } from '../data/entradasordenes';
 export class BackEntradasOrdenesComponent {
   bottomBarSize = "52px";
   isMaximized = false;
-  listaOrdenes: any [] = ENTRADASORDENES
+  // listaOrdenes: any [] = ENTRADASORDENES
+  listaOrdenes: any [] = ORDENES
 
 
   maximize(){

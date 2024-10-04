@@ -45,7 +45,7 @@ export class BackProductsListComponent implements OnInit{
   }
 
   onAgregarProducto(){
-    const modalRefEditar = this.modalService.open(MyModalComponent);
+    const modalRefEditar = this.modalService.open(MyModalComponent, {windowClass:  "my-modal "});
     modalRefEditar.componentInstance.name = 'editModal';
   }
 
@@ -108,7 +108,7 @@ export class BackProductsListComponent implements OnInit{
     // alert('No es posible mostar el Modal para editar el articulo')
     console.log("No es posible mostar el Modal para editar el articulo");
 
-    const modalRefEditar = this.modalService.open(MyModalComponent);
+    const modalRefEditar = this.modalService.open(MyModalComponent, {windowClass:  "my-modal "});
     modalRefEditar.componentInstance.name = 'editModal';
 
   }

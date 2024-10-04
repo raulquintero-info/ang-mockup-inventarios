@@ -4,7 +4,8 @@ import { PRODUCTOSORDEN } from '../data/productosorden';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAgregarItemComponent } from '../modal-agregar-item/modal-agregar-item.component';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ORDENES } from '../data/ordenes';
 
 @Component({
   selector: 'app-back-entradas-orden-detalle',
@@ -19,14 +20,20 @@ export class BackEntradasOrdenDetalleComponent implements OnInit {
   //{"id": "1", "proveedor": {id:1, nombre: "Office Depot"}, "domicilio": "Av Lazaro Cardena 1190", "ciudad": "Mexicali", "estado": " Baja California", "cp":"21110"};
   modalAgergarItem: any;
   carrito = PRODUCTOSORDEN;
+  ordenes = ORDENES;
   // items = ITEMS;
   total= 2500
   isEditing: boolean = false;
+  orden: any;
 
   private modalService= inject(NgbModal);
   private router = inject(Router);
-  ngOnInit(){
+  private activatedRoute = inject(ActivatedRoute);
 
+  ngOnInit(){
+    this.activatedRoute.params.subscribe(({id}) => {
+      this.orden = this.ordenes[id-1];
+    });
   }
 
   onSave() {
@@ -95,7 +102,7 @@ export class BackEntradasOrdenDetalleComponent implements OnInit {
   }
 
 
-  onGenerarRecepcion() {
+  onGenerarRecepcion(id: number) {
     const Toast = Swal.mixin({
       toast: true,
       position: "bottom-end",
@@ -122,14 +129,14 @@ export class BackEntradasOrdenDetalleComponent implements OnInit {
           icon: "success",
           title: "Recepcion de orden Generada!"
         });
-        this.grabarOrdenRecepcionNueva();
+        this.grabarOrdenRecepcionNueva(id);
       }
     });
 
   }
 
-  grabarOrdenRecepcionNueva(){
-    this.router.navigateByUrl('/entradas/ordenes-recepcion-detalle/1');
+  grabarOrdenRecepcionNueva(id: number){
+    this.router.navigate(['/entradas/ordenes-recepcion-detalle/',id]);
   }
 
 

@@ -18,6 +18,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Proveedor</th>
+        <th scope="col">Contacto</th>
         <th>Items</th>
         <th scope="col">Status</th>
         <th scope="col">Total</th>
@@ -28,7 +29,8 @@
       <tr [routerLink]="['/entradas/orden-detalle',orden.id]" *ngFor="let orden of listaOrdenes">
         <td scope="row">{{orden.id}}</td>
         <td>{{orden.proveedor.nombre|titlecase}}</td>
-        <td>{{orden.items}}</td>
+        <td>{{orden.proveedor.responsable|titlecase}}</td>
+        <td>{{orden.items.length}}</td>
         <td>{{orden.status}}</td>
         <td>{{orden.total| currency}}</td>
       </tr>
@@ -38,10 +40,9 @@
 
   </table>
 
-
-  <div class="text-center mt-5">
+  <!-- <div class="text-center mt-5">
     <img src="/assets/procesos/ordenes01.png" alt="" srcset="">
-  </div>
+  </div> -->
 
 
 </div>

@@ -2,10 +2,11 @@
   <div class="text-end">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" ><strong>Pedidos</strong></a>
+        <a class="nav-link active"
+        style="background-color: #e9dfcf; --bs-nav-tabs-link-active-border-color: #e9dfcf" aria-current="page" ><strong>Listado de Salidas</strong></a>
       </li>
       <li class="nav-item">
-        <button class=" ms-3 btn btn-verde" [routerLink]="'/salidas/pedidos-nuevo'">Pedido Nuevo</button>
+        <button class=" ms-3 btn btn-verde" [routerLink]="'/salidas/pedidos-nuevo'"><i class="bi bi-plus-circle"></i> Salida Nueva</button>
       </li>
 
     </ul>
@@ -16,9 +17,11 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Departamento</th>
+        <th scope="col">Responsable</th>
         <th>Items</th>
         <th scope="col">Status</th>
         <th scope="col">Total</th>
+        <th scope="col">Almacen</th>
       </tr>
     </thead>
     <tbody >
@@ -26,9 +29,11 @@
         <tr [routerLink]="['/salidas/pedidos-detalle',orden.id]" *ngFor="let orden of listaOrdenes">
           <td scope="row">{{orden.id}}</td>
           <td>{{orden.proveedor.nombre|titlecase}}</td>
+          <td>{{orden.responsable|titlecase}}</td>
           <td>{{orden.items}}</td>
           <td>{{orden.status}}</td>
           <td>{{orden.total| currency}}</td>
+          <td>{{orden.almacen}}</td>
         </tr>
 
 

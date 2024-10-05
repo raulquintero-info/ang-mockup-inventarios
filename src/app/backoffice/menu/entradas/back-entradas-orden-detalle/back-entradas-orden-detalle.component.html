@@ -75,6 +75,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a class="dropdown-item"> Orden Nueva</a></li>
                       <li><a class="dropdown-item"> Orden en Proceso</a></li>
+                      <li><a class="dropdown-item"> Autorizada</a></li>
                     </ul>
                   </div>
                 </div>
@@ -139,7 +140,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr (dblclick)="onEditProduct()" *ngFor="let item of orden.items">
+              <tr class="clickable" *ngFor="let item of orden.items" (click)="onEditProduct(item.id)">
                 <td scope="row">{{item.id}}</td>
                 <td>{{item.nombre}}</td>
                 <td>{{item.unidad.nombre}}</td>
@@ -161,7 +162,7 @@
         </div>
       </div>
       <div class="p-2" style="width: 370px; border-left: 1px solid #dee2e6">
-        <h2>Notas</h2>
+        <h2><i class="bi bi-stickies-fill"></i> Notas</h2>
         <hr>
         <div class=" text-end mb-3"><button class="btn btn-verde btn-sm" data-bs-toggle="collapse"
             data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i
@@ -210,11 +211,11 @@
 
   </div>
 
-<!--
-  <div >
-    <img src="/assets/procesos/ordenes01.png" alt="" srcset="">
-  </div> -->
+  <div class="text-center mt-5">
+    <img src="/assets/procesos/procesoOrdenes.png" alt="" srcset="">
+  </div>
 
+<br><br>
 
 </div>
 

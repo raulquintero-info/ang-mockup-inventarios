@@ -55,12 +55,15 @@ export class BackSalidasPedidosDetalleComponent implements OnInit{
   onAddProduct(){
     if (!this.isEditing) return;
     this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
+    this.modalAgergarItem.componentInstance.name = 'World';
 
   }
-  onEditProduct(){
+  onEditProduct(id: number){
     if (!this.isEditing) return;
     const modalRef = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
-    modalRef.componentInstance.name = 'World';
+    modalRef.componentInstance.name = 'Editar Cantidad';
+    modalRef.componentInstance.btnText = 'Actualizar';
+    modalRef.componentInstance.item = this.pedido.items[id-1];
   }
 
 

@@ -39,7 +39,7 @@ export class BackEntradasOrdenDetalleComponent implements OnInit {
   onSave() {
     const Toast = Swal.mixin({
       toast: true,
-      position: "bottom-end",
+      position: "top-end",
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
@@ -92,20 +92,23 @@ export class BackEntradasOrdenDetalleComponent implements OnInit {
   onAddProduct(){
     if (!this.isEditing) return;
 
-    this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent);
+    this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
+    this.modalAgergarItem.componentInstance.name = 'Agregar';
 
   }
-  onEditProduct(){
+  onEditProduct(id: number){
     if (!this.isEditing) return;
-    const modalRef = this.modalService.open(ModalAgregarItemComponent);
-    modalRef.componentInstance.name = 'World';
+    const modalRef = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
+    modalRef.componentInstance.name = 'Editar';
+    modalRef.componentInstance.btnText = 'Actualizar';
+    modalRef.componentInstance.item = this.orden.items[id-1];
   }
 
 
   onGenerarRecepcion(id: number) {
     const Toast = Swal.mixin({
       toast: true,
-      position: "bottom-end",
+      position: "top-end",
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,

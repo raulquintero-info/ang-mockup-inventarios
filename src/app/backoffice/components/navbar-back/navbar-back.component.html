@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item ms-3">
-          <a class="btn btn-gris" routerLink="/dashboard" aria-current="page" href="#">Dashboard</a>
+          <a class="btn btn-gris" routerLink="/dashboard" aria-current="page" href="#">Dashboard </a>
         </li>
 
         <li ngbDropdown class="nav-item dropdown">
@@ -39,14 +39,6 @@
           </div>
         </li>
         <li ngbDropdown class="nav-item dropdown">
-          <button type="button" class="btn btn-gris"  style="background-color: #e9dfcf" id="dropdownBasic1" ngbDropdownToggle>Salidas</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button [routerLink]="'/salidas/pedidos'" ngbDropdownItem>Salidas &raquo;</button>
-            <button [routerLink]="'/'" ngbDropdownItem>ProcesarSalida</button>
-            <button [routerLink]="'/salidas/departamentos'" ngbDropdownItem>Departamentos</button>
-          </div>
-        </li>
-        <li ngbDropdown class="nav-item dropdown">
           <button type="button" class="btn btn-gris" id="dropdownBasic1" ngbDropdownToggle>Almacenes</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button [routerLink]="'/almacenes/movimientos'" ngbDropdownItem>Movimientos &raquo;</button>
@@ -54,6 +46,15 @@
             <!-- <button ngbDropdownItem>Departamentos</button> -->
           </div>
         </li>
+        <li ngbDropdown class="nav-item dropdown">
+          <button type="button" class="btn btn-gris"  style="background-color: #e9dfcf" id="dropdownBasic1" ngbDropdownToggle>Salidas</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button [routerLink]="'/salidas/pedidos'" ngbDropdownItem>Salidas &raquo;</button>
+            <button [routerLink]="'/'" ngbDropdownItem>ProcesarSalida</button>
+            <button [routerLink]="'/salidas/departamentos'" ngbDropdownItem>Departamentos</button>
+          </div>
+        </li>
+
         <li class="nav-item ">
           <a class="btn btn-gris" routerLink="/" aria-current="page" >Reportes</a>
         </li>

@@ -21,9 +21,8 @@ export const PEDIDOS: any []=[
       {"id": 14, "nombre": "cuaderno scribe cuadriculado 100 hojas",  existencia: 100, "precio": 0, "minimo": 1, "maximo":0, "cantidad": 0 , "unidad": {"id": 1, "nombre": "pza"}}
 
     ],
-    pediosRelacionados:[
-      {id:1},
-      {id:2}
+    pedidosRelacionados:[
+      1,2
     ]
   },
   {
@@ -37,8 +36,7 @@ export const PEDIDOS: any []=[
 
     ],
     pediosRelacionados:[
-      {id:1},
-      {id:2}
+
     ]
   },
   {
@@ -58,8 +56,7 @@ export const PEDIDOS: any []=[
 
     ],
     pediosRelacionados:[
-      {id:1},
-      {id:2}
+
     ]
   }
 ]

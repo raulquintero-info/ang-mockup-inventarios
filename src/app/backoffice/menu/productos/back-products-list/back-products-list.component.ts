@@ -46,7 +46,7 @@ export class BackProductsListComponent implements OnInit{
 
   onAgregarProducto(){
     const modalRefEditar = this.modalService.open(MyModalComponent, {windowClass:  "my-modal "});
-    modalRefEditar.componentInstance.name = 'editModal';
+    modalRefEditar.componentInstance.name = 'Agregar Producto';
   }
 
   onCategory(categoria: string, id: any, i: any){
@@ -102,14 +102,15 @@ export class BackProductsListComponent implements OnInit{
       }, delay);
   }
 
-  doubleClick () {
+  doubleClick (id: number) {
     this.preventSingleClick = true;
     clearTimeout(this.timer);
     // alert('No es posible mostar el Modal para editar el articulo')
     console.log("No es posible mostar el Modal para editar el articulo");
 
     const modalRefEditar = this.modalService.open(MyModalComponent, {windowClass:  "my-modal "});
-    modalRefEditar.componentInstance.name = 'editModal';
+    modalRefEditar.componentInstance.name = 'Editar Producto';
+    modalRefEditar.componentInstance.item = this.items[id-1];
 
   }
   maximize(){

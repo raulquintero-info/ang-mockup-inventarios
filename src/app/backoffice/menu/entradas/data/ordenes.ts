@@ -25,7 +25,7 @@ export const ORDENES: any []=[
   },
   {
     id: 3,
-    status:'En Camino',
+    status:'Autorizada',
     total: 2500,
     proveedor:
     {"id": "1", "nombre": "La Rancehrita", "domicilio": "Av Lazaro Cardena 1190", "ciudad": "Mexicali", "estado": " Baja California", "cp":"21110", responsable: 'Roberto Jimenez', telefono: '686 493-5677', status: true},

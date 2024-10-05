@@ -38,7 +38,7 @@ export class BackSalidasPedidosNuevoComponent {
 onGrabar(){
   const Toast = Swal.mixin({
     toast: true,
-    position: "bottom-end",
+    position: "top-end",
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
@@ -81,15 +81,17 @@ viewPedido(){
 
   }
 
-  onAddProduct(){
+  onAddProduct(id: number){
     this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
     this.modalAgergarItem.componentInstance.name = 'Agregar Producto';
-    this.modalAgergarItem.componentInstance.item = this.carrito[1];
+    this.modalAgergarItem.componentInstance.btnText = 'Agregar';
+    this.modalAgergarItem.componentInstance.item = this.items[id-1];
 
   }
   onEditProduct(id: number){
     const modalRef = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
-    modalRef.componentInstance.name = 'Editar Producto';
+    modalRef.componentInstance.name = 'Actualizar Producto';
+    modalRef.componentInstance.btnText = 'Actualizar';
     modalRef.componentInstance.item = this.carrito[id-1];
 
   }

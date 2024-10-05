@@ -3,7 +3,7 @@
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link active" style="background-color: #e9dfcf; --bs-nav-tabs-link-active-border-color: #e9dfcf"
-          aria-current="page" data-bs-target="#home-tab-pane">Pedido Nuevo</a>
+          aria-current="page" data-bs-target="#home-tab-pane"><i class="bi bi-plus-circle"></i> Pedido Nuevo</a>
       </li>
 
       <li class="nav-item">
@@ -90,7 +90,7 @@
               TOTAL</div>
           </div>
           <div class="mt-3">
-            <button class="btn btn-verde" [disabled]="!proveedorSelected" (click)="onGrabar()" >Generar Orden <i class="bi bi-send"></i></button>
+            <button class="btn btn-verde" [disabled]="!proveedorSelected" (click)="onGrabar()" ><i class="bi bi-floppy2-fill"></i> Grabar Salida </button>
           </div>
         </div>
       </div>
@@ -113,10 +113,10 @@
         </thead>
         <tbody>
 
-          <tr  *ngFor="let item of carrito">
+          <tr class="clickable" *ngFor="let item of carrito" (click)="onEditProduct(item.id)" >
             <td scope="row">{{item.id}}</td>
-            <td (dblclick)="onEditProduct(item.id)" class="clickable">{{item.nombre}}</td>
-            <td (dblclick)="onEditProduct(item.id)" class="clickable">{{item.unidad.nombre}}</td>
+            <td class="clickable">{{item.nombre}}</td>
+            <td class="clickable">{{item.unidad.nombre}}</td>
             <td>{{item.cantidad}}</td>
             <!-- <td [ngClass]="{'bg-danger text-light': item.reservado<item.cantidad, 'bg-warning': item.reservado>item.cantidad}">{{item.reservado}}</td> -->
             <td style="text-align: right;">{{item.precio}} </td>
@@ -186,7 +186,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr (dblclick)="onAddProduct()" *ngFor="let item of items">
+              <tr class="clickable" *ngFor="let item of items" (click)="onAddProduct(item.id)">
                 <td scope="row">1</td>
                 <td>{{item.nombre}}</td>
                 <td>{{item.unidad.nombre}}</td>

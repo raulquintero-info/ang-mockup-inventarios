@@ -4,11 +4,11 @@
       <li class="nav-item" >
         <a class="nav-link active"
           style="background-color: #f9e4eb; --bs-nav-tabs-link-active-border-color: #dee2e6 var(--bs-border-color) #fae4eb;"
-          aria-current="page" data-bs-target="#home-tab-pane"><strong>Orden Nueva</strong></a>
+          aria-current="page" data-bs-target="#home-tab-pane"><strong> <i class="bi bi-plus-circle"></i> Orden Nueva</strong></a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <h4 class="ms-3 mt-1"> <i class="bi bi-1-circle text-primary "></i> Proceso - Orden de Compra</h4>
-      </li>
+      </li> -->
 
       <!-- <li class="nav-item">
         <button class=" ms-3 btn btn-secondary" [routerLink]="'/entradas/orden-nueva'">Grabar</button>
@@ -86,7 +86,7 @@
             <div style="font-size: 12px; font-weight: bold; text-align: center; background-color: gray; color: white;">TOTAL</div>
           </div>
           <div class="mt-2 mb-2">
-            <button class="btn btn-verde" [disabled]="!proveedorSelected" (click)="onGenerar()">Generar Orden <i
+            <button class="btn btn-verde" [disabled]="!proveedorSelected" (click)="onGenerar()">Grabar Orden <i
                 class="bi bi-send"></i></button>
           </div>
         </div>
@@ -110,7 +110,7 @@
         </thead>
         <tbody>
 
-          <tr (dblclick)="onEditProduct()" *ngFor="let item of carrito">
+          <tr class="clickable" *ngFor="let item of carrito" (click)="onEditProduct(item.id)">
             <td scope="row">{{item.id}}</td>
             <td>{{item.nombre}}</td>
             <td>{{item.unidad.nombre}}</td>
@@ -128,9 +128,9 @@
 
     </div>
 
-    <!-- <div class="text-center">
-      <img src="/assets/procesos/ordenes01.png" alt="" srcset="">
-    </div> -->
+    <div class="text-center">
+      <img src="/assets/procesos/procesoOrdenes.png" alt="" srcset="">
+    </div>
 
   </div>
 
@@ -179,7 +179,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr (dblclick)="onEditProduct()" *ngFor="let item of items">
+          <tr  *ngFor="let item of items" (click)="onAddProduct(item.id)">
             <td scope="row">1</td><td>{{item.nombre}}</td><td>{{item.unidad.nombre}}</td>
             <td  style="text-align: right;">{{item.precio}} </td>
             <td class="text-center" [ngClass]="{'bg-danger text-light': item.existencia<1}">{{item.existencia}}</td>

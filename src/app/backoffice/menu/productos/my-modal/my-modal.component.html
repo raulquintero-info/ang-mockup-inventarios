@@ -1,21 +1,21 @@
 <div class="modal-title">
-  <h2>Agregar / Editar</h2>
+  <h2>{{ name}}</h2>
 </div>
 <div class="m-3">
   <div class="input-group mb-3">
     <span class="input-group-text" id="nombre">Nombre Producto</span>
-    <input type="text" class="form-control" placeholder="nombre del producto" aria-label="Username"
+    <input type="text" class="form-control" placeholder="nombre del producto" aria-label="Username" [value]="item.nombre "
       aria-describedby="basic-addon1">
   </div>
 
   <div class="input-group mb-3">
     <span class="input-group-text" id="existencia">Existencia</span>
-    <input type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="basic-addon1">
+    <input type="text" class="form-control" placeholder="0" aria-label="Username" aria-describedby="basic-addon1" [value]="item.existencia">
   </div>
 
   <div class="input-group mb-3">
     <span class="input-group-text" id="predioCompra">Precio de compra</span>
-    <input type="text" class="form-control" placeholder="0.00" aria-label="Username" aria-describedby="basic-addon1">
+    <input type="text" class="form-control" placeholder="0.00" aria-label="Username" aria-describedby="basic-addon1" [value]="item.precio">
   </div>
   <div class="input-group mb-3">
     <span class="input-group-text" id="status">Status</span>
@@ -48,10 +48,10 @@
         <option value="3">Lapices</option>
       </select>
     </div>
-    <div>
+    <!-- <div>
       <button class="btn btn-secondary btn-sm  "
         style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">+</button>
-    </div>
+    </div> -->
   </div>
   Color
   <div class="d-flex">

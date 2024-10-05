@@ -78,6 +78,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a class="dropdown-item"> Orden Nueva</a></li>
                       <li><a class="dropdown-item"> Orden en Camino</a></li>
+                      <li><a class="dropdown-item"> Orden en Recibida</a></li>
                     </ul>
                   </div>
                 </div>
@@ -137,7 +138,7 @@
             </thead>
             <tbody>
 
-              <tr (dblclick)="onEditProduct()" *ngFor="let item of orden.items">
+              <tr class="clickable" *ngFor="let item of orden.items" (click)="onEditProduct(item.id)">
                 <td scope="row">{{item.id}}</td>
                 <td>{{item.nombre}}</td>
                 <td>{{item.unidad.nombre}}</td>
@@ -206,6 +207,11 @@
         </div>
       </div>
     </div>
+
+    <div class="text-center mt-5">
+      <!-- <img src="/assets/procesos/procesoOrdenes.png" alt="" srcset=""> -->
+    </div>
+
 
 
   </div>

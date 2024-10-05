@@ -19,8 +19,10 @@ import { BackSalidasPedidosNuevoComponent } from './backoffice/menu/salidas/back
 import { BackAlmacenesMovimientoNuevoComponent } from './backoffice/menu/almacenes/back-almacenes-movimiento-nuevo/back-almacenes-movimiento-nuevo.component';
 import { BackEntradasOrdenRecepcionListComponent } from './backoffice/menu/entradas/back-entradas-orden-recepcion-list/back-entradas-orden-recepcion-list.component';
 import { BackEntradasOrdenRecepcionDetalleComponent } from './backoffice/menu/entradas/back-entradas-orden-recepcion-detalle/back-entradas-orden-recepcion-detalle.component';
+import { HomeComponent } from './backoffice/home/home.component';
 
 const routes: Routes = [
+  {path: "", component: HomeComponent},
   {path: "dashboard", component:DashboardBackComponent},
   {path: "productos", component: BackProductsListComponent},
   {path: "productos/categorias", component: BackProductosCategoriasComponent},

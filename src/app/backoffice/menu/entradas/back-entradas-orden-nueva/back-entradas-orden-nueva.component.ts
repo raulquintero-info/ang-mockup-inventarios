@@ -24,6 +24,7 @@ export class BackEntradasOrdenNuevaComponent implements OnInit {
 
 
 
+
   private modalService = inject(NgbModal);
   private router = inject(Router)
   ngOnInit() {
@@ -38,7 +39,7 @@ export class BackEntradasOrdenNuevaComponent implements OnInit {
   onGenerar() {
     const Toast = Swal.mixin({
       toast: true,
-      position: "bottom-end",
+      position: "top-end",
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
@@ -82,12 +83,18 @@ export class BackEntradasOrdenNuevaComponent implements OnInit {
 
   }
 
-  onAddProduct() {
+  onAddProduct(id: number) {
     this.modalAgergarItem = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
+    this.modalAgergarItem.componentInstance.name = "Agregar Producto";
+    this.modalAgergarItem.componentInstance.btnText = "Agregar";
+    this.modalAgergarItem.componentInstance.item = this.items[id-1];
+
 
   }
-  onEditProduct() {
+  onEditProduct(id: number) {
     const modalRef = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
-    modalRef.componentInstance.name = 'World';
+    modalRef.componentInstance.name = "Editar Producto";
+    modalRef.componentInstance.btnText = "Editar";
+    modalRef.componentInstance.item = this.carrito[id-1];
   }
 }

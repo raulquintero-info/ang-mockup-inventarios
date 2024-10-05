@@ -3,12 +3,12 @@
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" data-bs-target="#home-tab-pane"><strong>Detalle del Pedido
-            #001</strong></a>
+            #00{{pedido.id}}</strong></a>
       </li>
 
       <li class="nav-item ms-3 mt-2">
         Pedidos Relacionadas
-        <button class="btn btn-verde ms-3 btn-sm" *ngFor="let item of pedido.pedidosRelacionados"> 00{{ item}} </button>
+        <button class="btn btn-verde ms-3 btn-sm" *ngFor="let item of pedido.pedidosRelacionados" [routerLink]="['/salidas/pedidos-detalle/', item]"> 00{{ item}} </button>
         <!-- <button class=" ms-3 btn btn-verde btn-sm"> 002</button> -->
       </li>
 
@@ -126,7 +126,7 @@
             </thead>
             <tbody>
 
-              <tr (dblclick)="onEditProduct()" *ngFor="let item of pedido.items">
+              <tr class="clickable" *ngFor="let item of pedido.items" (click)="onEditProduct(item.id)">
                 <td scope="row">{{item.id}}</td>
                 <td>{{item.nombre}}</td>
                 <td>{{item.unidad.nombre}}</td>
@@ -149,7 +149,7 @@
       </div>
       <!-- NOTAS -->
       <div class="p-2" style="width: 370px; border-left: 1px solid #dee2e6">
-        <h2>Notas</h2>
+        <h2><i class="bi bi-stickies-fill"></i> Notas</h2>
         <hr>
         <div class=" text-end mb-3"><button class="btn btn-verde btn-sm" data-bs-toggle="collapse"
             data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i

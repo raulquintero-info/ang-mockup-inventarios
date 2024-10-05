@@ -30,6 +30,7 @@ import { BackEntradasOrdenRecepcionComponent } from './backoffice/menu/entradas/
 import { BackAlmacenesMovimientoNuevoComponent } from './backoffice/menu/almacenes/back-almacenes-movimiento-nuevo/back-almacenes-movimiento-nuevo.component';
 import { BackEntradasOrdenRecepcionListComponent } from './backoffice/menu/entradas/back-entradas-orden-recepcion-list/back-entradas-orden-recepcion-list.component';
 import { BackEntradasOrdenRecepcionDetalleComponent } from './backoffice/menu/entradas/back-entradas-orden-recepcion-detalle/back-entradas-orden-recepcion-detalle.component';
+import { HomeComponent } from './backoffice/home/home.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { BackEntradasOrdenRecepcionDetalleComponent } from './backoffice/menu/en
     BackAlmacenesMovimientoNuevoComponent,
     BackEntradasOrdenRecepcionListComponent,
     BackEntradasOrdenRecepcionDetalleComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

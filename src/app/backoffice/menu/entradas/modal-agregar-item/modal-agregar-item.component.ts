@@ -10,6 +10,7 @@ export class ModalAgregarItemComponent {
 
 @Input() name: string ='';
 @Input() item: any;
+@Input() btnText: string ='x';
 
   public activeModal = inject(NgbActiveModal);
     private ngZone = inject (NgZone);

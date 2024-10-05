@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit, inject } from '@angular/core';
+import { Component, Input, NgZone, OnInit, inject } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 
@@ -12,6 +12,9 @@ export class MyModalComponent implements OnInit {
   public activeModal = inject(NgbActiveModal);
   private ngZone = inject(NgZone);
 
+    @Input() name: string ='';
+    @Input() item: any;
+
 
   ngOnInit() {
 
@@ -20,7 +23,7 @@ export class MyModalComponent implements OnInit {
   onGenerar() {
     const Toast = Swal.mixin({
       toast: true,
-      position: "bottom-end",
+      position: "top-end",
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,

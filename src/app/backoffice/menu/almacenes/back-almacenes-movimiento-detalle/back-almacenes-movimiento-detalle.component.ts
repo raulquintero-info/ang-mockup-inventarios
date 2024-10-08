@@ -1,17 +1,17 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalAgregarItemComponent } from '../../entradas/modal-agregar-item/modal-agregar-item.component';
-import { MOVIMIENTOSLISTA } from '../data/movimientoslista';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ITEMS } from 'src/app/data/items';
+import { MOVIMIENTOSLISTA } from '../data/movimientoslista';
+import { Router } from '@angular/router';
+import { ModalAgregarItemComponent } from '../../entradas/modal-agregar-item/modal-agregar-item.component';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-back-almacenes-movimiento-nuevo',
-  templateUrl: './back-almacenes-movimiento-nuevo.component.html',
-  styleUrls: ['./back-almacenes-movimiento-nuevo.component.css']
+  selector: 'app-back-almacenes-movimiento-detalle',
+  templateUrl: './back-almacenes-movimiento-detalle.component.html',
+  styleUrls: ['./back-almacenes-movimiento-detalle.component.css']
 })
-export class BackAlmacenesMovimientoNuevoComponent implements OnInit {
+export class BackAlmacenesMovimientoDetalleComponent {
 
   movimientos :any = MOVIMIENTOSLISTA;
   movimiento: any;
@@ -34,7 +34,7 @@ export class BackAlmacenesMovimientoNuevoComponent implements OnInit {
 
   }
 
-  onGenerar(){
+  onSave() {
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -46,9 +46,10 @@ export class BackAlmacenesMovimientoNuevoComponent implements OnInit {
         toast.onmouseleave = Swal.resumeTimer;
       }
     });
+
     Swal.fire({
       title: "Desea Continuar?",
-      text: "Esta Accion Genera un movimiento nuevo entre almacenes",
+      text: "Grabar Cambios",
       // icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -60,7 +61,7 @@ export class BackAlmacenesMovimientoNuevoComponent implements OnInit {
           icon: "success",
           title: "Orden Grabada!"
         });
-        this.viewMovimiento();
+        this.grabarOrden();
       }
     });
 
@@ -71,6 +72,12 @@ export class BackAlmacenesMovimientoNuevoComponent implements OnInit {
 
   }
 
+  onEditar(){
+    this.isEditing = true;
+  }
+  grabarOrden(){
+    this.isEditing = false;
+  }
   maximize(){
     this.bottomBarSize="35%";
     this.isMaximized = true;
@@ -91,7 +98,8 @@ export class BackAlmacenesMovimientoNuevoComponent implements OnInit {
 
   }
   onEditProduct(id: number){
-    // if (!this.isEditing) return;
+    console.log(id)
+    if (!this.isEditing) return;
     const modalRef = this.modalService.open(ModalAgregarItemComponent, {windowClass:  "my-modal "});
     modalRef.componentInstance.name = 'Recibir/Actualizar';
     modalRef.componentInstance.btnText = 'Grabar';

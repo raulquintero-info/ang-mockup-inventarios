@@ -20,6 +20,10 @@ import { BackAlmacenesMovimientoNuevoComponent } from './backoffice/menu/almacen
 import { BackEntradasOrdenRecepcionListComponent } from './backoffice/menu/entradas/back-entradas-orden-recepcion-list/back-entradas-orden-recepcion-list.component';
 import { BackEntradasOrdenRecepcionDetalleComponent } from './backoffice/menu/entradas/back-entradas-orden-recepcion-detalle/back-entradas-orden-recepcion-detalle.component';
 import { HomeComponent } from './backoffice/home/home.component';
+import { BackEntradasDevolucionesComponent } from './backoffice/menu/entradas/back-entradas-devoluciones/back-entradas-devoluciones.component';
+import { BackEntradasDevolucionesNuevaComponent } from './backoffice/menu/entradas/back-entradas-devoluciones-nueva/back-entradas-devoluciones-nueva.component';
+import { BackAlmacenesMovimientoDetalleComponent } from './backoffice/menu/almacenes/back-almacenes-movimiento-detalle/back-almacenes-movimiento-detalle.component';
+import { BackEntradasDevolucionesDetalleComponent } from './backoffice/menu/entradas/back-entradas-devoluciones-detalle/back-entradas-devoluciones-detalle.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -29,6 +33,9 @@ const routes: Routes = [
   {path: "productos/agregar", component: BackProductosAgregarComponent},
   {path: "productos/tipos", component: BackProductosTiposComponent},
   {path: "entradas/proveedores", component: BackEntradasProveedoresComponent},
+  {path: "entradas/devoluciones", component: BackEntradasDevolucionesComponent},
+  {path: "entradas/devoluciones-nueva", component: BackEntradasDevolucionesNuevaComponent},
+  {path: "entradas/devoluciones-detalle/:id", component: BackEntradasDevolucionesDetalleComponent},
   {path: "entradas/ordenes", component: BackEntradasOrdenesComponent},
   {path: "entradas/ordenes-recepcion-list", component: BackEntradasOrdenRecepcionListComponent},
   {path: "entradas/ordenes-recepcion-detalle/:id", component: BackEntradasOrdenRecepcionDetalleComponent},
@@ -41,6 +48,7 @@ const routes: Routes = [
   {path: "salidas/departamentos", component: BackSalidasDepartamentosComponent},
   {path: "almacenes/movimientos", component: BackAlmacenesMovimientosComponent},
   {path: "almacenes/movimiento-nuevo", component: BackAlmacenesMovimientoNuevoComponent},
+  {path: "almacenes/movimiento-detalle/:id", component: BackAlmacenesMovimientoDetalleComponent},
   {path: "almacenes", component: BackAlmacenesListComponent},
 
 

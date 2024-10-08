@@ -16,22 +16,26 @@
       <thead>
         <tr>
           <th scope="col">#</th>
+          <th scope="col">Fecha</th>
           <th scope="col">Almacen Origen</th>
           <th scope="col">Almacen Destino</th>
-          <th>Autor</th>
+          <th>Empleado</th>
           <th scope="col">Items</th>
-          <th scope="col">Total</th>
+          <th scope="col">Estatus</th>
+          <!-- <th scope="col">Total</th> -->
         </tr>
       </thead>
       <tbody>
 
-        <tr [routerLink]="['/entradas/orden-detalle',orden.id]" *ngFor="let orden of listaMovimientos">
+        <tr class="clickable" *ngFor="let orden of listaMovimientos" [routerLink]="['/almacenes/movimiento-detalle',orden.id]">
           <td scope="row" >{{orden.id}}</td>
+          <td scope="row" >{{orden.fecha}}</td>
           <td >{{orden.almacenOrigen.nombre|titlecase}}</td>
           <td >{{orden.almacenDestino.nombre|titlecase}}</td>
-          <td>{{orden.autor}}</td>
-          <td>{{orden.items}}</td>
-          <td>{{orden.total| currency}}</td>
+          <td>{{orden.empleado}}</td>
+          <td>{{orden.items.length}}</td>
+          <td>{{orden.status}}</td>
+          <!-- <td>{{orden.total| currency}}</td> -->
         </tr>
 
 

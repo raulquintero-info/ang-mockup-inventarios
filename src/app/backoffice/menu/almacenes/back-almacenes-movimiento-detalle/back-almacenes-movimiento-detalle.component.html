@@ -67,8 +67,36 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12 text-end">
-                <button class="btn btn-verde" (click)="onGenerar()">Generar Movimiento</button>
+              <div class="col-md-10 text-end">
+                <div class="col-md-3">
+                  <div class="dropdown">
+                    Estatus: <button class="btn btn-warning dropdown-toggle btn-sm" type="button"
+                      id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Orden en Camino
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item"> Orden Nueva</a></li>
+                      <li><a class="dropdown-item"> Orden en Camino</a></li>
+                      <li><a class="dropdown-item"> Orden en Recibida</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 text-end">
+                <button *ngIf="isEditing" class="btn btn-guinda" (click)="onSave()"><i class="bi bi-floppy2-fill"></i>
+                  Grabar
+                  Orden Recibida</button>
+                <div *ngIf="!isEditing" class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Opciones
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item"><i class="bi bi-filetype-pdf"></i> Generar PDF</a></li>
+                    <li><a class="dropdown-item" (click)="onEditar()"><i class="bi bi-pencil-square"></i> Editar</a>
+                    </li>
+                  </ul>
+                </div>
                 </div>
 
 

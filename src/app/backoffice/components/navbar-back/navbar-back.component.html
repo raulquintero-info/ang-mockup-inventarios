@@ -32,7 +32,7 @@
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button [routerLink]="'entradas/ordenes'" ngbDropdownItem>Ordenes de Compra &raquo;</button>
             <button [routerLink]="'entradas/ordenes-recepcion-list'" ngbDropdownItem>Ordenes Recibidas &raquo;</button>
-            <button [routerLink]="'/'" ngbDropdownItem>Devoluciones &raquo;</button>
+            <button [routerLink]="'/entradas/devoluciones'" ngbDropdownItem>Devoluciones &raquo;</button>
             <button [routerLink]="'entradas/proveedores'" ngbDropdownItem>Proveedores</button>
             <!-- <button [routerLink]="'/'" ngbDropdownItem>Devoluciones</button> -->
             <!-- <button ngbDropdownItem>Almacenes</button> -->
@@ -50,7 +50,7 @@
           <button type="button" class="btn btn-gris"  style="background-color: #e9dfcf" id="dropdownBasic1" ngbDropdownToggle>Salidas</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button [routerLink]="'/salidas/pedidos'" ngbDropdownItem>Salidas &raquo;</button>
-            <button [routerLink]="'/'" ngbDropdownItem>ProcesarSalida</button>
+            <!-- <button [routerLink]="'/'" ngbDropdownItem>ProcesarSalida</button> -->
             <button [routerLink]="'/salidas/departamentos'" ngbDropdownItem>Departamentos</button>
           </div>
         </li>

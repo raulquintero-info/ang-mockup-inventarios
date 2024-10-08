@@ -38,8 +38,8 @@
                 </div>
                 <div class="col-4" (click)="'/'">
                   <label for="inputAddress" class="form-label clickable"
-                    [routerLink]="'/entradas/orden-detalle/1'">[Orden de
-                    compra: </label> <strong> 1</strong>]
+                    [routerLink]="'/entradas/orden-detalle/2'">[Orden de
+                    compra: </label> <strong> 2</strong>]
                   <!-- <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"> -->
                 </div>
                 <div class="col-4">
@@ -115,6 +115,7 @@
                   <li><a class="dropdown-item"><i class="bi bi-filetype-pdf"></i> Generar PDF</a></li>
                   <!-- <li><a class="dropdown-item"><i class="bi bi-floppy2-fill"></i> Grabar</a></li> -->
                   <li><a class="dropdown-item" (click)="onEditar()"><i class="bi bi-pencil-square"></i> Dar Entrada</a>
+                    <li><a class="dropdown-item" [routerLink]="['/entradas/devoluciones']"><i class="bi bi-arrow-return-left"></i> Devoluciones</a>
                   </li>
                 </ul>
               </div>
@@ -221,6 +222,10 @@
 
 
 </div>
+
+
+
+
 <nav class="navbar fixed-bottom navbar-light  ps-2" [ngStyle]="{height: bottomBarSize}"
   style="height: 100px; border-top:2px solid #808080 ;background-color: #d9dadf;">
   <i class="arrow-up" *ngIf="!isMaximized" style="position: absolute; top:-1px; left: 50dvw;"> </i>
